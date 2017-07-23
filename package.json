@@ -3,7 +3,11 @@
   "main": "./lib/spotify-service",
   "version": "0.0.1",
   "description": "Provides an easy interface for atom to interact with Spotify",
-  "keywords": ["spotify", "atom", "service"],
+  "keywords": [
+    "spotify",
+    "atom",
+    "service"
+  ],
   "repository": "https://github.com/itotallyrock/spotify-service",
   "license": "MIT",
   "private": true,
@@ -19,6 +23,8 @@
     }
   },
   "dependencies": {
+    "disposable-event": "^1.0.3",
+    "event-to-promise": "^0.8.0",
     "spotify-web-helper": "^1.11.0"
   }
 }
