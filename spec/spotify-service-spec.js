@@ -6,6 +6,7 @@ import { Emitter } from 'atom'
 describe('SpotifyService', () => {
   let spotifyService, runAsync
   beforeEach(() => {
+    // Copy the module for test sandboxing
     spotifyService = {}
     Object.assign(spotifyService, SpotifyService)
     spotifyService.activate()
@@ -22,10 +23,9 @@ describe('SpotifyService', () => {
       expect(spotifyService.provideSpotifyService() instanceof Promise).toBe(true)
     })
     it('resolves to an emitter', () => {
-      let startupPromise = spotifyService.provideSpotifyService()
       // Force the promise to resolve
-      spotifyService.spotify.player.emit('ready')
-      startupPromise.then((eventEmitter) => {
+      spotifyService.startupPromise = Promise.resolve()
+      spotifyService.provideSpotifyService().then((eventEmitter) => {
         expect(eventEmitter instanceof Emitter).toBe(true)
       })
     })
